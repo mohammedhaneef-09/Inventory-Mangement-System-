@@ -1,0 +1,67 @@
+import json
+import time
+ct = time.ctime()
+
+fd = open('Records.json','r')
+js = fd.read()
+fd.close()
+
+product_details = json.loads(js)
+print('---------------------------------')
+print('              MENU                  ')
+print('---------------------------------')
+print()
+for PD in product_details.keys():
+    print(PD,product_details[PD]['Name'],product_details[PD]['price'],'Rs')
+print()
+user_name=input("Enter your Name: ")
+user_phno=input('Enter phno: ')
+user_mail=input('Enter mail id: ')
+prod_id = str(input('Enter id of your choice: '))
+prod_qun = int(input('Enter how much you want: \n'))
+
+if product_details[prod_id]["Qun"] >= prod_qun:
+    
+    print('-----------------------------------')
+    print('               BILL                ')
+    print('-----------------------------------')
+    print()
+    print('Name             :',   product_details[prod_id]['Name'],'\n')
+    print('Quantity         :',   prod_qun,'\n')
+    print('-----------------------------------')
+    print('Billing Amount    :',   prod_qun*product_details[prod_id]['price'])
+    print('-----------------------------------')
+
+    
+    product_details[prod_id]["Qun"]  =  product_details[prod_id]["Qun"] - prod_qun
+    sales_record = 'Name : ' + user_name+',  '+'Phno : '+user_phno+',  '+"Mail id : "+user_mail+',  '+'Order Name : '+product_details[prod_id]["Name"]+',  '+'Quantity you Ordered : '+str(prod_qun)+',  '+'Price of order : '+str(product_details[prod_id]['price'])+',  '+'Total Bill : '+str(prod_qun*int(product_details[prod_id]['price']))+',  '+'Time : '+ct+'\n'
+else:
+
+    print('Sorry we have left',product_details[prod_id]['Qun'],'only')
+    user_inp = input('Do you want to proceed press Y/y: ')
+    if (user_inp == 'Y' or user_inp == 'y'):
+    
+        print('-----------------------------------')
+        print('               BILL                ')
+        print('-----------------------------------')
+        print()
+        print('Name             :',   product_details[prod_id]['Name'],'\n')
+        print('Quantity         :',   product_details[prod_id]["Qun"],'\n')
+        print('-----------------------------------')
+        print('Billing Amount    :',   product_details[prod_id]["Qun"]*product_details[prod_id]['price'])
+        print('-----------------------------------')
+        
+        sales_record = 'Name : ' + user_name+',  '+'Phno : '+user_phno+',  '+"Mail id : "+user_mail+',  '+'Order Name : '+product_details[prod_id]["Name"]+',  '+'Quantity you Ordered : '+str(product_details[prod_id]["Qun"])+',  '+'Price of order : '+str(product_details[prod_id]['price'])+',  '+'Total Bill : '+str(product_details[prod_id]["Qun"]*int(product_details[prod_id]['price']))+','+'Time : '+ct+'\n'
+
+        product_details[prod_id]["Qun"]  =  '0'
+    else:
+        print('Thanks!')
+        
+fd = open('Records.json','w')
+js = json.dumps(product_details)
+fd.write(js)
+fd.close()
+
+fd = open('Sales_record.txt','a')
+sr = fd.write(sales_record)
+fd.close()
