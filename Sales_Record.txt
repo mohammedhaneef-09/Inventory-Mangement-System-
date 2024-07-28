@@ -1,4 +1,0 @@
-Name : haneef,  Phno : 4746001137,  Mail id : haneef@12mail.com,  Order Name : Coffee,  Quantity you Ordered : 5,  Price of order : 20,  Total Bill : 100,  Time : Fri Jul  5 11:17:00 2024
-Name : yaseen,  Phno : 65898464,  Mail id : habe@mail.com,  Order Name : Coffee,  Quantity you Ordered : 1,  Price of order : 20,  Total Bill : 20,  Time : Fri Jul  5 14:25:14 2024
-Name : wasim,  Phno : 8745196313,  Mail id : wasim@mail.com,  Order Name : Choclate Cake,  Quantity you Ordered : 10,  Price of order : 400,  Total Bill : 4000,Time : Fri Jul  5 14:28:08 2024
-Name : zaid,  Phno : 154478612,  Mail id : zaid@mail.com,  Order Name : Cake,  Quantity you Ordered : 15,  Price of order : 300,  Total Bill : 4500,  Time : Fri Jul  5 14:31:09 2024
